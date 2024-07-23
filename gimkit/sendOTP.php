@@ -8,10 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
 
         $sql = "UPDATE user SET OTP = '$otp' WHERE user_id = ".$_SESSION['mySession'].";";
-        if ($con->query($sql) === TRUE) {
+        if ($conn->query($sql) === TRUE) {
         } 
         else {
-            echo "Error updating OTP: " . $con->error;
+            echo "Error updating OTP: " . $conn->error;
         }
 
         $to = $_POST["email"];

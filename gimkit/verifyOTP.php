@@ -2,7 +2,7 @@
 include("session.php");
 include("conn.php");
 $sql = "SELECT * FROM user WHERE user_id = ".$_SESSION['mySession'].";";
-$result = mysqli_query($con, $sql);
+$result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($_POST["password"] == $row['user_password']){
             if ($otp == $expectedOTP) {
                 $sql2 = "UPDATE user SET user_password = '$newpassword' WHERE user_id = ".$_SESSION['mySession'].";";
-                if(mysqli_query($con, $sql2)) {
+                if(mysqli_query($conn, $sql2)) {
                     echo '<script>alert("Password changed successfully!");
                     window.location.href="login.php";
                     </script>';
                 } else {
-                    echo "Error updating password: " . mysqli_error($con);
+                    echo "Error updating password: " . mysqli_error($conn);
                 }
             } else {
                 echo '<script>alert("Invaild OTP");</script>';
