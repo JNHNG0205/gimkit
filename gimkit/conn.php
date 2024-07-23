@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "gimkit");
+$conn = mysqli_connect("localhost", "root", "", "gimkit");
 
 //Check connection 
 if (mysqli_connect_errno()) {
