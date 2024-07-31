@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["title"];
     $description = $_POST["description"];
     $media_type = $_POST["media_type"];
-    $target_dir = __DIR__ . "/uploads/"; // Use absolute path
+    $target_dir = __DIR__ . "/"; // Use absolute path
     
     // Create uploads directory if it doesn't exist
     if (!file_exists($target_dir)) {
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if ($stmt_material->execute()) {
                 $material_id = $stmt_material->insert_id;
-                $media_URL = "http://" . $_SERVER['HTTP_HOST'] . "/uploads/" . basename($target_file);
+                $media_URL = basename($target_file);
                 
                 // Insert media information with NULL discussion_id
                 $sql_media = "INSERT INTO media (media_type, media_URL, material_id, discussion_id, comment_id, question_id, option_id, response_id) VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL)";
