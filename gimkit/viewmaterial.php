@@ -17,7 +17,7 @@ $result_materials = $conn->query($sql_materials);
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
         .material { border: 1px solid #ccc; padding: 10px; margin-bottom: 20px; }
-        .media { margin-top: 10px; }
+        .media { margin-top: 10px; width: 250px; height: 250px;}
         img { max-width: 100%; height: auto; }
     </style>
 </head>
@@ -30,7 +30,6 @@ $result_materials = $conn->query($sql_materials);
             echo "<div class='material'>";
             echo "<h2>" . htmlspecialchars($row_material["title"]) . "</h2>";
             echo "<p>" . htmlspecialchars($row_material["description"]) . "</p>";
-            echo "<p>Created at: " . $row_material["created_at"] . "</p>";
             
             // Fetch media for this material
             $sql_media = "SELECT * FROM media WHERE material_id = " . $row_material["material_id"];
