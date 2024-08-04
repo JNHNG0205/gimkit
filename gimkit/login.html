@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo1.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Gimkit</title>
+    <style>
+        .loader{
+            position: relative;
+            height: 350px;
+            width: 350px;
+            animation: spin 1.5s infinite;
+            z-index: 1100;
+            transition: opacity 3.8s, visibility 3.6s;
+        }
+        .loaderBg{
+            background-color:#010326;
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-items: center center;
+            z-index: 1009;
+            transition: opacity 4s, visibility 3.8s;
+        }
+        @keyframes spin{
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .loader--hidden{
+            opacity:0;
+            visibility: hidden;
+        }
+        .loaderBg--hidden{
+            opacity:0;
+            visibility: hidden;
+        }
+        .loader>div:nth-child(1){
+            z-index: 1100;
+            height:75px;
+            width: 75px;
+            background-image: linear-gradient(
+                45deg,
+                #DF564A,
+                #DFB54A
+            );
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            box-shadow: 0 0 3px #DF564A;
+            border-radius: 50%;
+            animation: move1 1.5s infinite;
+        }
+        @keyframes move1{
+            50%{
+                transform: translate(-30px,-30px) scale(0.3);
+            }
+        }
+        .loader>div:nth-child(2){
+            z-index: 1100;
+            height:45px;
+            width: 45px;
+            background-image: linear-gradient(
+                45deg,
+                #F2DC91,
+                #F4D08A
+            );
+            position: absolute;
+            top: 105px;
+            right: 110px;
+            box-shadow: 0 0 2px #F2DC91;
+            border-radius: 50%;
+            animation: move2 1.5s infinite;
+        }
+        @keyframes move2{
+            50%{
+                transform: translate(15px,-20px) scale(0.55);
+            }
+        }
+        .loader>div:nth-child(3){
+            z-index: 1100;
+            height:75px;
+            width: 75px;
+            background-image: linear-gradient(
+                45deg,
+                #D99E6A,
+                #D5D9AD
+            );
+            position: absolute;
+            bottom: 100px;
+            right: 100px;
+            box-shadow: 0 0 3px #D99E6A;
+            border-radius: 50%;
+            animation: move3 1.5s infinite;
+        }
+        @keyframes move3{
+            50%{
+                transform: translate(30px,30px) scale(0.3);
+            }
+        }
+        .loader>div:nth-child(4){
+            z-index: 1100;
+            height:45px;
+            width: 45px;
+            background-image: linear-gradient(
+                45deg,
+                #B6D9AD,
+                #CDB667
+            );
+            position: absolute;
+            bottom: 105px;
+            left: 110px;
+            box-shadow: 0 0 3px #B6D9AD;
+            border-radius: 50%;
+            animation: move4 1.5s infinite;
+        }
+        @keyframes move4{
+            50%{
+                transform: translate(-15px,20px) scale(0.55);
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener("load", ()=>{
+            const loader = document.querySelector(".loader");
+
+            loader.classList.add("loader--hidden");
+
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild(loader);
+            });
+        });
+        window.addEventListener("load", ()=>{
+            const loaderBg = document.querySelector(".loaderBg");
+
+            loaderBg.classList.add("loaderBg--hidden");
+
+            loaderBg.addEventListener("transitionend", () => {
+                document.body.removeChild(loaderBg);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="loaderBg">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <audio autoplay loop id="mySong">
+        <source src="Burgundy - Like You Mean It (freetouse.com).mp3" type="audio/mp3">
+   
+    <div class="cursor"></div>
+    <script>
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', e => {
+            cursor.setAttribute("style", "top: "+(e.pageY - 11)+"px; left: "+(e.pageX - 10)+"px")
+        })
+    </script>
+    </audio>
+    <section>
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+ 
+        <div class="flip-container">
+            <div class="flipper" id="flipper">
+                <div class="front">
+
+                    <div class="front">
+                        <h1 class="title">Login</h1>
+                        <form class="form" action="auth.php" method="post">
+                            <input type="hidden" name="action" value="login">
+                            <div class="inputBx">
+                                <input type="text" name="user_name" required>
+                                <i>Username</i>
+                            </div>
+                            <div class="inputBx">
+                                <input type="password" name="user_password" required>
+                                <i>Password</i>
+                            </div>
+                            <div class="links">
+                                <a href="#" style="letter-spacing: 0.10em;">Forgot Password</a>
+                                <a class="flipbutton" id="loginButton"  href="#">Signup</a>
+                            </div>
+                            <div class="inputBx">
+                                <input type="submit" value="Login">
+                            </div>
+                            <div class="tooltip">
+                                <img src="pause.png" id="icon" class="music">
+                                <span class="word" style="transition:0.1s;">Let's Rock!!</span>
+                            </div>
+                                <audio loop id="mySong">
+                                    <source src="Burgundy - Like You Mean It (freetouse.com).mp3" type="audio/mp3">
+                                </audio>
+                            <script>
+                                var mySong = document.getElementById("mySong");
+                                var icon = document.getElementById("icon");
+                    
+                                icon.onclick = function(){
+                                    if(mySong.paused){
+                                        mySong.play();
+                                        icon.src = "pause.png";
+                                    }else{
+                                        mySong.pause();
+                                        icon.src = "play.png";
+                                    }
+                                }
+                            </script>
+                        </form>
+                    </div>
+                </div>
+                <div class="back">
+                    <h2 class="title">Register</h2>
+                    <form class="form" action="auth.php" method="post">
+                        <input type="hidden" name="action" value="register">
+                        <div class="inputBx">
+                            <input type="text" name="user_name" required>
+                            <i>Username</i>
+                        </div>
+                        <div class="inputBx">
+                            <input type="password" name="user_password" required>
+                            <i>Password</i>
+                        </div>
+                        <div class="inputBx">
+                            <input type="email" name="user_email" required>
+                            <i>Email</i>
+                        </div>
+                        <div class="inputBx">
+                            <input type="submit" value="Sign up">
+                        </div>
+                        <div class="links">
+                            <a class="flipbutton" id="registerButton" href="#">Back to Login</a>
+                        </div>
+                    </form>
+                </div>
+    </section>
+    <script>
+        var loginButton = document.getElementById("loginButton");
+        var registerButton = document.getElementById("registerButton");
+
+        loginButton.onclick = function(){
+            document.querySelector("#flipper").classList.toggle("flip");
+        }
+
+        registerButton.onclick = function(){
+            document.querySelector("#flipper").classList.toggle("flip");
+        }
+    </script>
+    </section>
+</body>
+</html>
