@@ -18,24 +18,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $material_id = getPostValue('material_id');
     
     if (!empty($material_id)) {
-        // Prepare SQL statement to delete the material
-        $delete_sql = "DELETE FROM materials WHERE material_id = ?";
-        $delete_stmt = $conn->prepare($delete_sql);
-        $delete_stmt->bind_param("i", $material_id);
-        
-        // Execute the statement
-        if ($delete_stmt->execute()) {
-            $message = "Material deleted successfully. Associated media have also been deleted.";
-        } else {
-            $message = "Error deleting material: " . $conn->error;
-        }
-        
-        // Close delete statement
-        $delete_stmt->close();
+        // Start transaction
+        $conn->begin_transaction();
 
-        // Refresh the materials list after deletion
-        $result = $conn->query($fetch_sql);
-        $materials = $result->fetch_all(MYSQLI_ASSOC);
+        try {
+            // Fetch associated media files
+            $media_sql = "SELECT media_URL FROM media WHERE material_id = ?";
+            $media_stmt = $conn->prepare($media_sql);
+            $media_stmt->bind_param("i", $material_id);
+            $media_stmt->execute();
+            $media_result = $media_stmt->get_result();
+            $media_files = $media_result->fetch_all(MYSQLI_ASSOC);
+
+            // Delete media files from server
+            foreach ($media_files as $media) {
+                $file_path = __DIR__ . '/' . $media['media_URL'];
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+
+            // Delete media entries from database
+            $delete_media_sql = "DELETE FROM media WHERE material_id = ?";
+            $delete_media_stmt = $conn->prepare($delete_media_sql);
+            $delete_media_stmt->bind_param("i", $material_id);
+            $delete_media_stmt->execute();
+
+            // Delete the material
+            $delete_material_sql = "DELETE FROM materials WHERE material_id = ?";
+            $delete_material_stmt = $conn->prepare($delete_material_sql);
+            $delete_material_stmt->bind_param("i", $material_id);
+            $delete_material_stmt->execute();
+
+            // Commit transaction
+            $conn->commit();
+
+            $message = "Material and associated media deleted successfully.";
+
+            // Refresh the materials list after deletion
+            $result = $conn->query($fetch_sql);
+            $materials = $result->fetch_all(MYSQLI_ASSOC);
+
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            $conn->rollback();
+            $message = "Error deleting material and media: " . $e->getMessage();
+        }
+
+        // Close statements
+        if (isset($media_stmt)) $media_stmt->close();
+        if (isset($delete_media_stmt)) $delete_media_stmt->close();
+        if (isset($delete_material_stmt)) $delete_material_stmt->close();
+
     } else {
         $message = "Please select a material to delete.";
     }
